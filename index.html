@@ -5,38 +5,53 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matsedel</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- template for article representing a dish -->
-  <template>
-    <article>
-      <header>
-        <span>[Veckodag]</span>
-        <span>[datum]</span>
-      </header>
-      <ul>
-        
-      </ul>
-    </article>
-  </template>
-  
-  <header>
-    <h1>Matsedel</h1>
-  </header>
-  <main>
-    <!-- section containing today's dish(es) -->
-    <section>
-      <header>
-        <h2>Dagens: (<span>[dagens datum]</span>)</h2>
-      </header>
-    </section>
+  <div class="wrapper">
+    <!-- template for article representing a dish -->
+    <template>
+      <article>
+        <header>
+          <span>[Veckodag]</span>
+          <span>[datum]</span>
+        </header>
+        <ul>
 
-    <!-- section containing this week's dishes -->
-    <section>
-      <header>
-        <h2>Vecka: <span>[veckonummer]</span></h2>
-      </header>
-    </section>
-  </main>
+        </ul>
+      </article>
+    </template>
+    
+    <header>
+      <h1>Matsedel</h1>
+    </header>
+    <main>
+      <!-- section containing today's dish(es) -->
+      <section>
+        <header>
+          <h2>Dagens: (<span>[dagens datum]</span>)</h2>     
+        </header>
+          <!-- static articles to test the css with -->
+          <article>
+            <header>
+              <span>[Veckodag]</span>
+              <span>[datum]</span>
+            </header>
+            <ul>
+              <li>lorembiff med potatis</li>
+              <li>loremsoppa</li>
+            </ul>
+          </article>
+      </section>
+
+      <!-- section containing this week's dishes -->
+      <section>
+        <header>
+          <h2>Vecka: <span>[veckonummer]</span></h2>
+        </header>
+      </section>
+    </main>
+  </div>
+  
 </body>
 </html>

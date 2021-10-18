@@ -1,1 +1,45 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+body {
+  margin: 0;
+}
+
+* > header {
+  background-color: #5ccc43;
+}
+
+* > header * {
+  color: #eee;
+  text-align: center;
+}
+
+.wrapper {
+  margin: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: min-content auto;
+      grid-template-rows: -webkit-min-content auto;
+      grid-template-rows: min-content auto;
+      grid-template-areas: "header" "main";
+  min-height: 100vh;
+}
+
+.wrapper header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: header;
+}
+
+.wrapper main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: main;
+}
+
+.wrapper main article header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+/*# sourceMappingURL=style.css.map */
