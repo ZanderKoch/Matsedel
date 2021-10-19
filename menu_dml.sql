@@ -10,6 +10,8 @@ INSERT INTO menu(serving_date, description) VALUES("2021-01-02", "" );
 
 INSERT INTO menu(serving_date, description) VALUES("", "" );
 
+INSERT INTO menu(serving_date, description) VALUES("20210403", "pankaka" );
+
 INSERT INTO menu(serving_date, description) VALUES("2020-04-1", "äggakaka" );
 
 INSERT INTO menu(serving_date, description) VALUES("2020-2-1", "pizza" );
