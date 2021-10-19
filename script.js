@@ -3,6 +3,21 @@
  * @author Zander Koch
  * @version 1
  */
+//////////////
+//Dummy data//
+//////////////
+let dummyMenu = [
+    {servingdate:"2021-10-19", description:"lorembiff"},
+    {servingdate:"2021-10-19", description:"lorembiff2"},
+    {servingdate:"2021-10-20", description:"lorembiff"},
+    {servingdate:"2021-10-20", description:"lorembiff2"},
+    {servingdate:"2021-10-21", description:"lorembiff"},
+    {servingdate:"2021-10-22", description:"lorembiff"},
+    {servingdate:"2021-10-22", description:"lorembiff2"},
+    {servingdate:"2021-10-23", description:"lorembiff"},
+
+]
+
 
 
 ///////////
@@ -77,6 +92,9 @@ function init(){
     //display all clientside determined values on the site
     displayClientsideValues();
 
+    /* fetch the menu, loop through it, generate date based articles with dishes
+     * 
+     */
 
 }
 
