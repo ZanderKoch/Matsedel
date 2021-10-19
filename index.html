@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matsedel</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <script type="module" src="script.js" defer></script>
 </head>
 <body>
   <div class="wrapper">
@@ -30,7 +30,7 @@
       <!-- section containing today's dish(es) -->
       <section>
         <header>
-          <h2>Dagens: (<span>[dagens datum]</span>)</h2>     
+          <h2>Dagens: (<span id="todaydate">[dagens datum]</span>)</h2>     
         </header>
           <!-- static articles to test the css with -->
           <article>
@@ -48,7 +48,7 @@
       <!-- section containing this week's dishes -->
       <section>
         <header>
-          <h2>Vecka: <span>[veckonummer]</span></h2>
+          <h2>Vecka <span id="weeknumber">[veckonummer]</span></h2>
         </header>
       </section>
     </main>
