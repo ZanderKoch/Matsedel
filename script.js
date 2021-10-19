@@ -26,12 +26,12 @@ function getWeek(){
     // Adjust to Thursday in week 1 and count number of weeks from date to week1.
     return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000
                           - 3 + (week1.getDay() + 6) % 7) / 7);
-  }
+}
+
+
 ////////////////
 //Declarations//
 ////////////////
-
-
 
 /**
  * @type {String}
@@ -39,7 +39,6 @@ function getWeek(){
 let todayDate;
 
 /**
- * the current week of the year as an int
  * @type {Number} must be an integer
  */
 let currentWeekNumber;
@@ -53,12 +52,12 @@ todayDate = getCurrentDateString();
 console.log(todayDate); //debug
 
 currentWeekNumber = getWeek();
-console.log(currentWeekNumber)
+console.log(currentWeekNumber) //debug
 
 
-///////////
-//Methods//
-///////////
+/////////////
+//functions//
+/////////////
 
 /**
  * gets the current time and returns it in a string with the format "YYY-MM-DD"
@@ -74,7 +73,7 @@ function getCurrentDateString(){
     let month = date.getMonth() + 1; //getMonth() returns 0-indexed month
     let day = date.getDate();
 
-    //making sure the day portion always taks up two symbols
+    //making sure the day portion always takes up two symbols
     if (day <= 9){
         day = "0" + day;
     }
