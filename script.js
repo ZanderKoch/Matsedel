@@ -93,7 +93,7 @@ function init(){
     displayClientsideValues();
 
     /* fetch the menu, loop through it, generate date based articles with dishes
-     * 
+     * according to template
      */
 
 }
