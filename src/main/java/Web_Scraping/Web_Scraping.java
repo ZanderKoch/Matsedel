@@ -26,27 +26,12 @@ public class Web_Scraping {
         List<String> stuff = new ArrayList<>();
         try{
             Document doc = Jsoup.connect("https://mpi.mashie.com/public/app/V%C3%A4xj%C3%B6%20kommun%20ny/6f5fa240").get(); // vilken sida vi webbskrapar information från
-            Elements body = doc.select("h3"); // vilket element vi hämtar
-              stuff.add("Title");
-              stuff.add(body.get(0).html()); // skriver ut första h3 taggen som finns
-
-               Elements Week = doc.select("div.panel-group"); //specifierar att vi hämtar en div med en specifik klass
-               stuff.add("Week");
-               stuff.add(Week.get(0).select("h4.app-week").get(0).html());
-              
-               
-               Elements Day = doc.select("div.panel-group");
-               stuff.add("Day");
-               stuff.add(Day.get(0).select("div").get(4).html()); //hämtar den 5 diven från listan
-               
-              
-               Elements serving_date = doc.select("div.panel-group");
-               stuff.add("Serving date");
-               String månad = "0";
-               String str = serving_date.get(0).select("div").get(3).html();
+               Elements week = doc.select("div.panel-group"); //div för hela menyn
+               for(int i = 0;i < 5;i++){
+                Element day = week.select(".panel").get(i); // hämtar information från html klassen panel som är dagvis
+                String månad = "0"; //ger defaultvärde
+                String str = day.select("div.pull-right").get(0).html(); // hämtar datumen från sidan med html klassen pull-right
                 String[] arrOfStr = str.split(" "); //delar en sträng med split
-                for (String a : arrOfStr)
-                    stuff.add(a);
                 
                 switch(arrOfStr[1]){ //kollar vilken case som matchar från listan och skriver sedan ut korrekt 
                     case("jan" ): 
@@ -87,39 +72,14 @@ public class Web_Scraping {
                     break;
                     
                 }
-                String date1 ="2021" +"-"+ månad+"-" + arrOfStr[0];
+                
+                String date1 ="2021" +"-"+ månad+"-" + arrOfStr[0]; //skriver ut korrekt formatering av datum tex 2021-10-20 beroende vad den får från lsitan
                 Date mån= new SimpleDateFormat("yyyy-MM-dd").parse(date1);
-                stuff.add(date1); //skriver ut korrekt formatering av datum tex 2021-10-20 beroende vad den får från lsitan
+                stuff.add(date1); 
                 
-                Elements daily_dish = doc.select("div.list-group");
-               stuff.add("daily dish 1");
-               stuff.add(daily_dish.get(0).select("div.app-daymenu-name").get(0).html());
-               
-               
-               Elements daily_dish2 = doc.select("div.list-group");
-               stuff.add("daily dish 2");
-               stuff.add(daily_dish2.get(0).select("div.app-daymenu-name").get(1).html());
-               
-                
-               Elements dish = doc.select("div.panel-group");
-               stuff.add("Dish 1");
-               stuff.add(dish.get(0).select("div.app-daymenu-name").get(0).html());
-               
-               
-               
-               
-                Elements week = doc.select("div.panel-group");
-                System.out.println(dish.select(".panel").get(1));
-               for(int i = 0;i < 5;i++){
-                   stuff.add("Day!");
-                    Element day = week.select(".panel").get(i);
-                    stuff.add("Dish 1");
-                    stuff.add(day.select("div.app-daymenu-name").get(0).html());
-                    stuff.add("Dish 2");
-                    stuff.add(day.select("div.app-daymenu-name").get(1).html());
+                stuff.add(day.select("div.app-daymenu-name").get(0).html());
                     
-                    stuff.add("Date");
-                    stuff.add(day.select("div.pull-right").get(0).html());
+                stuff.add(day.select("div.app-daymenu-name").get(1).html());
                }
         }
         catch(IOException ex){
