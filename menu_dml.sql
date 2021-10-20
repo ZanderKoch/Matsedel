@@ -41,3 +41,4 @@ SELECT * FROM menu ORDER BY description DESC;
 SELECT * FROM menu ORDER BY id ASC;
 SELECT * FROM menu ORDER BY id DESC;
 SELECT * FROM menu WHERE serving_date LIKE "202%-%-%" ORDER BY serving_date ASC;
+SELECT * FROM menu WHERE serving_date LIKE "20%-%-%" ORDER BY serving_date ASC;
