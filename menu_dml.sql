@@ -8,7 +8,13 @@ INSERT INTO menu(serving_date, description) VALUES("", "Grillad ryggbiff servera
 
 INSERT INTO menu(serving_date, description) VALUES("2021-01-02", "" );
 
-INSERT INTO menu(serving_date, description) VALUES("", "" );
+INSERT INTO menu(serving_date, description) VALUES("", "");
+
+INSERT INTO menu(serving_date, description) VALUES("2018-05-08", "köttfärspaj serveras med stuvad grönkol");
+
+INSERT INTO menu(serving_date, description) VALUES("2013-06-18", "sillamacka");
+
+INSERT INTO menu(serving_date, description) VALUES("2008-07-28", "grillad lax med potatissallad");
 
 INSERT INTO menu(serving_date, description) VALUES("20210403", "pankaka" );
 
