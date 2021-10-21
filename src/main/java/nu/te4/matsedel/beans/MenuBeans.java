@@ -25,7 +25,7 @@ public class MenuBeans {
     public List<Menu> getMenu(){
         List<Menu> menuList = new ArrayList<>();
         try(Connection con = ConnectionFactory.getConnection()){
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM menu");
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM menu ORDER BY serving_date ASC");
             ResultSet result = stmt.executeQuery();
             while(result.next()){
                 String description = result.getString("description");
@@ -38,5 +38,21 @@ public class MenuBeans {
             System.out.println("menuBean.getMenu: " + e.getMessage());
         }
         return menuList;
+    }
+    
+    public boolean postMenu(Menu menu){
+        boolean success = false;
+         try(Connection con = ConnectionFactory.getConnection()){
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO menu(serving_date, description) VALUES(?,?)");
+            stmt.setDate(1, menu.getServing_date());
+            stmt.setString(2, menu.getDescription());
+            
+            
+            success = stmt.executeUpdate() > 0;
+        }
+        catch(Exception e){
+            System.out.println("Postmenu.postmenus: " + e.getMessage());
+        }
+        return success;
     }
 }

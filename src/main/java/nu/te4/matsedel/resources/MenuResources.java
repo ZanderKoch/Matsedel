@@ -8,6 +8,7 @@ package nu.te4.matsedel.resources;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -17,7 +18,7 @@ import nu.te4.menu.entities.Menu;
 
 /**
  *
- * @author Elev
+ * @author Patrick Kulevski
  */
 @Path("menu")
 @Produces(MediaType.APPLICATION_JSON)
@@ -33,6 +34,19 @@ public class MenuResources {
         }
         else{
             return Response.noContent().build();
+        }
+    }
+    
+    @POST
+    public Response postMenu(Menu menu){
+        if(menuBean.postMenu(menu)){
+            return Response.status(Response.Status.CREATED).build();
+        }
+        else{
+            return Response
+                    .serverError()
+                    .entity("Oops, something went wrong!")
+                    .build();
         }
     }
 }

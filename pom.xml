@@ -28,6 +28,16 @@
             <artifactId>jsoup</artifactId>
             <version>1.14.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+             <artifactId>quartz</artifactId>
+             <version>2.2.3</version>
+        </dependency>
+        <dependency>
+             <groupId>org.quartz-scheduler</groupId>
+             <artifactId>quartz-jobs</artifactId>
+             <version>2.2.3</version>
+        </dependency> 
     </dependencies>
     
      <build>

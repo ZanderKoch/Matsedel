@@ -8,4 +8,7 @@
             30
         </session-timeout>
     </session-config>
+    <listener>
+        <listener-class>nu.te4.matsedel.serlvets.WebScrapingServlet</listener-class>
+    </listener>
 </web-app>

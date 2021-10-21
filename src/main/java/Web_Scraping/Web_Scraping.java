@@ -28,10 +28,13 @@ public class Web_Scraping {
             Document doc = Jsoup.connect("https://mpi.mashie.com/public/app/V%C3%A4xj%C3%B6%20kommun%20ny/6f5fa240").get(); // vilken sida vi webbskrapar information från
                Elements week = doc.select("div.panel-group"); //div för hela menyn
                for(int i = 0;i < 5;i++){
+                  
                 Element day = week.select(".panel").get(i); // hämtar information från html klassen panel som är dagvis
                 String månad = "0"; //ger defaultvärde
                 String str = day.select("div.pull-right").get(0).html(); // hämtar datumen från sidan med html klassen pull-right
                 String[] arrOfStr = str.split(" "); //delar en sträng med split
+                
+                    
                 
                 switch(arrOfStr[1]){ //kollar vilken case som matchar från listan och skriver sedan ut korrekt 
                     case("jan" ): 
@@ -77,13 +80,15 @@ public class Web_Scraping {
                 Date mån= new SimpleDateFormat("yyyy-MM-dd").parse(date1);
                 stuff.add(date1); 
                 
-                stuff.add(day.select("div.app-daymenu-name").get(0).html());
-                    
-                stuff.add(day.select("div.app-daymenu-name").get(1).html());
+                
+                stuff.add(day.select("div.app-daymenu-name").get(0).html()); //description 1
+                stuff.add(day.select("div.app-daymenu-name").get(1).html()); //description 2
+
                }
+               
         }
         catch(IOException ex){
-            stuff.add("Error fetching focument!");
+            stuff.add("Error fetching document!");
         }   
         return stuff;
    }
