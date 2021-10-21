@@ -32,6 +32,10 @@ INSERT INTO menu(serving_date, description) VALUES("2064-09-28", "höst-sallad" 
 
 INSERT INTO menu(serving_date, description) VALUES("2024-02-29", "raggmunkar med lingon och stek fläsk" );
 
+INSERT INTO menu(serving_date, description) VALUES("2006-02-29", "kolpudding med potatis, lingon och sås" );
+
+INSERT INTO menu(serving_date, description) VALUES("2033-02-31", "Tacopaj" );
+
 INSERT INTO menu(serving_date, description) VALUES("äpple paj", "2018-12-19" );
 
 INSERT INTO menu(serving_date, description) VALUES("2020-40-18", "Tims helagade paj" );
