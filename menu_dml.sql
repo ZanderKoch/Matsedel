@@ -42,6 +42,8 @@ INSERT INTO menu(serving_date, description) VALUES("2020-40-18", "Tims helagade 
 
 INSERT INTO menu(serving_date, description) VALUES("2020-00-18", "ramen" );
 
+INSERT INTO menu(serving_date, description) VALUES("2000-04-00", "Glass" );
+
 INSERT INTO menu(serving_date, description) VALUES("2030-11-20", "Tims hemlagade paj" );
 
 INSERT INTO menu(serving_date, description) VALUES("2030-11-31", "taocs" );
