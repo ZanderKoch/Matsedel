@@ -42,6 +42,8 @@ INSERT INTO menu(serving_date, description) VALUES("2020-40-18", "Tims helagade 
 
 INSERT INTO menu(serving_date, description) VALUES("2030-11-20", "Tims hemlagade paj" );
 
+INSERT INTO menu(serving_date, description) VALUES("2030-11-31", "taocs" );
+
 INSERT INTO menu(serving_date, description) VALUES("22020-11-10", "helsteckt spätta med kokt potatis och remuladsås" );
 
 INSERT INTO menu(serving_date, description) VALUES("8080-10-18", "friterad biff med ris och sötsursås" );
