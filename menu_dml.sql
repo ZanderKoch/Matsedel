@@ -18,6 +18,8 @@ INSERT INTO menu(serving_date, description) VALUES( null, "kaka" );
 
 INSERT INTO menu(serving_date, description) VALUES("2010-06-05", null);
 
+INSERT INTO menu(serving_date, description) VALUES(null, null);
+
 INSERT INTO menu(serving_date, description) VALUES("2008-07-28", "grillad lax med potatissallad");
 
 INSERT INTO menu(serving_date, description) VALUES("20210403", "pankaka" );
