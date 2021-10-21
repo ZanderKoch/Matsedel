@@ -16,7 +16,7 @@ INSERT INTO menu(serving_date, description) VALUES("2013-06-18", "sillamacka");
 
 INSERT INTO menu(serving_date, description) VALUES( null, "kaka" );
 
-
+INSERT INTO menu(serving_date, description) VALUES("2010-06-05", null);
 
 INSERT INTO menu(serving_date, description) VALUES("2008-07-28", "grillad lax med potatissallad");
 
