@@ -155,7 +155,7 @@ function checkDayMenusForDate(date){
 
 
     };
-    console.log("returning " + result);       //debug
+    console.log("returning " + result);   //debug
     console.log("---------------------"); //debug
     return result;
 }
@@ -214,10 +214,17 @@ function separateMenu(inputCollection){
 function generateArticle(dayMenu){
     // Test to see if the browser supports the HTML template element by checking
     // for the presence of the template element's content attribute.
-    if ('content' in document.createElement('template')) {
+    if ('content' in document.createElement("template")) {
+        //initializing template and cloning its contents
+        let template = document.querySelector("#template")
+        let templateClone = 
+
+
+
 
     }
     else{
+        /** @todo display this with a generic error function instead */
         alert("This page is unable to display correctly, because your browser" +
         " does not support HTML templates");
     }
