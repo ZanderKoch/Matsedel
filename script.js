@@ -212,10 +212,16 @@ function separateMenu(inputCollection){
  * @returns {Node} a node containing the generated article
  */
 function generateArticle(dayMenu){
-    /**
-     * 
-     */
-    let template = document.getElementsByTagName("template")
+    // Test to see if the browser supports the HTML template element by checking
+    // for the presence of the template element's content attribute.
+    if ('content' in document.createElement('template')) {
+
+    }
+    else{
+        alert("This page is unable to display correctly, because your browser" +
+        " does not support HTML templates");
+    }
+
 }
 
 
