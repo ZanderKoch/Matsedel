@@ -26,8 +26,6 @@ console.log(dummyMenu);
 ///////////
 
 import {getWeek} from "./getWeek.js";
-//import {separateMenu} from "./separateMenuByEqualDates.js";
-//I'm having a hard time making this work so im gonna try to solve this myself
 
 ////////////////
 //Declarations//
@@ -110,11 +108,14 @@ function displayClientsideValues(){
 /**
  * checks if a a daymenu with a certain date already exists in dayMenuList
  * @param {String} date the date being checked for
- * @returns {Boolean} true if date already exists, otherwise false
+ * @returns {Boolean} true if DayMeny already exists for date, otherwise false
  * @todo this function can't be working right because it seems to always be
  * returning false
  */
-function checkDayMenusForDate (date){
+function checkDayMenusForDate(date){
+    //result to be returned
+    let result;
+    
     //debug logging
     console.log("---------------------"); //debug
     console.log("checkDayMenusForDate:"); //debug
@@ -127,9 +128,16 @@ function checkDayMenusForDate (date){
     if (dayMenuList.length === 1) {
         return dayMenuList[0].date == date;
     }
+    switch (dayMenuList.length) {
+        case 0:
+            result = false;
+            break;
+        case 1:
+            result = dayMenuList[0].date == date;
+    }
     
     //looping through dayMenuList
-    dayMenuList.forEach(currentDayMenu =>{
+    for(let currentDayMenu of dayMenuList){
         console.log(
             "current dayMenuList-item's date: " + currentDayMenu.date); //debug
         
@@ -137,12 +145,19 @@ function checkDayMenusForDate (date){
         if(currentDayMenu.date == date){
             console.log("returning true");        //debug
             console.log("---------------------"); //debug
-            return true;
+            result = true;
+            break; //a match was found, ending loop early    
         }
-    });
-    console.log("returning false");        //debug
+        else{
+            result = false; //result will be false untill a match is found and 
+            //forach loop breaks or stay false if none are found 
+        }
+
+
+    };
+    console.log("returning " + result);       //debug
     console.log("---------------------"); //debug
-    return false;
+    return result;
 }
 
 /**
@@ -167,18 +182,15 @@ function getDayMenuFromDate(date){
  * serving_date:"YYYY-MM-DD",description:""
  */
 function separateMenu(inputCollection){
-    let createdDayMenu;
     inputCollection.forEach(currentDish =>{
         //determening if the current dish's date already has a DayMenu
         // with its date in dayMenulist
-        console.log(checkDayMenusForDate(currentDish.serving_date))
         if(checkDayMenusForDate(currentDish.serving_date)){
-            console.log("found a duplicate date")
-            //finds said existing DayMenu and adds the dish to its dish list
-            /**
-             * @todo update this part to work like it does in the else statement
-             */
-            
+            //adding a new dish to the latest daymenu
+            dayMenuList[dayMenuList.length - 1].dishes
+                .push(currentDish.description);
+            console.log("added " + currentDish.description +
+                " to existing DayMenu");  //debug
         }
         else{
             //no such DayMenu exists yet, creates it and adds the dish to its
@@ -188,9 +200,25 @@ function separateMenu(inputCollection){
                 dayMenuList.push(new DayMenu(currentDish.serving_date)) - 1;
             dayMenuList[createdDayMenuIndex].
                 dishes.push(currentDish.description);
+            console.log("created DayMenu for " + currentDish.serving_date + 
+                " and added " + currentDish.description);  //debug
         }
     })
 }
+
+/**
+ * generates article based on provided DayMenu and a template in the HTML file
+ * @param {DayMenu} dayMenu DayMenu that article will be generated from
+ * @returns {Node} a node containing the generated article
+ */
+function generateArticle(dayMenu){
+    /**
+     * 
+     */
+    let template = document.getElementsByTagName("template")
+}
+
+
 
 /**
  * initialization
@@ -219,6 +247,9 @@ function init(){
     separateMenu(dummyMenu); //using dummyMenu for debug
     //separated menu stores in dayMenuList
     console.log(dayMenuList);
+
+    //generating and displaying the articles 
+    displayTodayMenu();
     
 }
 
