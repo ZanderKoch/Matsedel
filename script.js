@@ -109,21 +109,40 @@ function displayClientsideValues(){
 
 /**
  * checks if a a daymenu with a certain date already exists in dayMenuList
- * @param {Object[]} inputCollection the collection being checked
  * @param {String} date the date being checked for
  * @returns {Boolean} true if date already exists, otherwise false
  * @todo this function can't be working right because it seems to always be
  * returning false
  */
-function checkDayMenusForDate (inputCollection, date){
-    //the result to be returned at the end of the operation
-    let result = false;
-    //checking the list
-    inputCollection.forEach(currentDish =>{
-        result = currentDish.serving_date === date;
-    });
+function checkDayMenusForDate (date){
+    //debug logging
+    console.log("---------------------"); //debug
+    console.log("checkDayMenusForDate:"); //debug
+    console.log("input date: " + date);   //debug
 
-    return result;
+    /* the foreach won't run the second time because adding a single item makes
+     * it forget that it's an array, in that case the comparison is done inside 
+     * this if() statement
+     */
+    if (dayMenuList.length === 1) {
+        return dayMenuList[0].date == date;
+    }
+    
+    //looping through dayMenuList
+    dayMenuList.forEach(currentDayMenu =>{
+        console.log(
+            "current dayMenuList-item's date: " + currentDayMenu.date); //debug
+        
+        //comparing input date to date of current
+        if(currentDayMenu.date == date){
+            console.log("returning true");        //debug
+            console.log("---------------------"); //debug
+            return true;
+        }
+    });
+    console.log("returning false");        //debug
+    console.log("---------------------"); //debug
+    return false;
 }
 
 /**
@@ -152,15 +171,14 @@ function separateMenu(inputCollection){
     inputCollection.forEach(currentDish =>{
         //determening if the current dish's date already has a DayMenu
         // with its date in dayMenulist
-        console.log(checkDayMenusForDate(dayMenuList, currentDish.serving_date))
-        if(checkDayMenusForDate(dayMenuList, currentDish.serving_date)){
+        console.log(checkDayMenusForDate(currentDish.serving_date))
+        if(checkDayMenusForDate(currentDish.serving_date)){
             console.log("found a duplicate date")
             //finds said existing DayMenu and adds the dish to its dish list
             /**
              * @todo update this part to work like it does in the else statement
              */
-            let existingDayMenu = getDayMenuFromDate(currentDish.serving_date);
-            existingDayMenu.dishes.push(currentDish.description);
+            
         }
         else{
             //no such DayMenu exists yet, creates it and adds the dish to its
