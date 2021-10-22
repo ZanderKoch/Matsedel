@@ -88,7 +88,10 @@ function getCurrentDateString(){
     let month = date.getMonth() + 1; //getMonth() returns 0-indexed month
     let day = date.getDate();
 
-    //making sure the day portion always takes up two symbols
+    //making sure the day and month portion always takes up two symbols
+    if (month<= 9){
+        month = "0" + month;
+    }
     if (day <= 9){
         day = "0" + day;
     }
@@ -109,8 +112,6 @@ function displayClientsideValues(){
  * checks if a a daymenu with a certain date already exists in dayMenuList
  * @param {String} date the date being checked for
  * @returns {Boolean} true if DayMeny already exists for date, otherwise false
- * @todo this function can't be working right because it seems to always be
- * returning false
  */
 function checkDayMenusForDate(date){
     //result to be returned
@@ -161,22 +162,6 @@ function checkDayMenusForDate(date){
 }
 
 /**
- * gets the DayMenu in dayMenuList with the given date
- * @param {String} date the given date
- * @returns {DayMenu} the Daymenu in dayMenuList with specified date.
- */
-function getDayMenuFromDate(date){
-    dayMenuList.forEach(currentDayMenu =>{
-        if(currentDayMenu.date == date){
-            console.log(currentDayMenu.date); //debug
-            console.log(date);                //debug
-            console.log(currentDayMenu);      //debug
-            return currentDayMenu;
-        }
-    })
-}
-
-/**
  * creates a collection of dayMenus from an collection of dishes
  * @param {Object[]} inputCollection a collection of dishes with
  * serving_date:"YYYY-MM-DD",description:""
@@ -217,11 +202,12 @@ function generateArticle(dayMenu){
     if ('content' in document.createElement("template")) {
         //initializing template and cloning its contents
         let template = document.querySelector("#template")
-        let templateClone = 
+        let templateClone = template.cloneNode(true);
+        
+        //getting weekday as a string
+        let weekday = getWeekDay(dayMenu.date);
 
-
-
-
+        //writing weekday and 
     }
     else{
         /** @todo display this with a generic error function instead */
@@ -229,6 +215,24 @@ function generateArticle(dayMenu){
         " does not support HTML templates");
     }
 
+}
+
+/**
+ * get the day of the week of a string reperesented date
+ * @param {String} dateString date in format "YYYY-MM-DD"
+ * @returns {String} the day of the week on provided date in swedish
+ */
+function getWeekDay(dateString){
+    //splitting dateString into array ["YYYY","MM","DD"]
+    let dateArray = dateString.split("-");
+    
+    //creating a Date from values in dateArray and returning its weekday
+    let date = new Date(dateArray[0], dateArray[1] - 1, dateArray[2]);
+    let weekday = new Intl.DateTimeFormat("sv-SV", {weekday: "long"})
+        .format(date);
+    weekday = weekday.charAt(0).toUpperCase() + weekday.slice(1); //capitalizes
+    return weekday;
+    
 }
 
 
@@ -262,7 +266,10 @@ function init(){
     console.log(dayMenuList);
 
     //generating and displaying the articles 
-    displayTodayMenu();
+    //displayTodayMenu();
+
+    //debug
+    console.log(getWeekDay(todayDate));
     
 }
 
