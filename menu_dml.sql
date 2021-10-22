@@ -62,10 +62,17 @@ INSERT INTO menu(serving_date, description) VALUES("22020-11-10", "helsteckt sp�
 INSERT INTO menu(serving_date, description) VALUES("8080-10-18", "friterad biff med ris och sötsursås" );
 
 SELECT * FROM menu ORDER BY serving_date ASC;
+
 SELECT * FROM menu ORDER BY serving_date DESC;
+
 SELECT * FROM menu ORDER BY description ASC;
+
 SELECT * FROM menu ORDER BY description DESC;
+
 SELECT * FROM menu ORDER BY id ASC;
+
 SELECT * FROM menu ORDER BY id DESC;
+
 SELECT * FROM menu WHERE serving_date LIKE "202%-%-%" ORDER BY serving_date ASC;
+
 SELECT * FROM menu WHERE serving_date LIKE "20%-%-%" ORDER BY serving_date ASC;
