@@ -221,9 +221,7 @@ function generateArticle(dayMenu){
             dishList.appendChild(templi);
         }
 
-        //returning finished template clone
-        console.log(templateClone); //debug
-
+        return templateClone;
     }
     else{
         /** @todo display this with a generic error function instead */
@@ -251,6 +249,38 @@ function getWeekDay(dateString){
     
 }
 
+/**
+ * displays the current day's menu
+ * @todo implement 
+ */
+function displayTodayMenu(){
+    //trying to find today's DayMenu from dayMenuList
+    let todayMenu
+    for(let dayMenu of dayMenuList){
+        if(dayMenu.date == todayDate){
+            todayMenu = dayMenu
+        }
+    }
+    
+    //finding the section to display in
+    let section = document.querySelector("#todaysection")
+
+    //generating and displaying on page if found, 
+    //doing some sorta error handling if not
+    if(todayMenu != "undefined"){
+        let article = generateArticle(todayMenu);
+        section.appendChild(article);
+    }
+
+}
+
+/**
+ * displays al DayMenus in dayMenuList
+ * @todo implement
+ */
+function displayDayMenuList(){
+
+}
 
 
 /**
@@ -282,9 +312,8 @@ function init(){
     console.log(dayMenuList);
 
     //generating and displaying the articles 
-    //displayTodayMenu();
-    console.log(dayMenuList[0])
-    generateArticle(dayMenuList[0]);
+    displayTodayMenu();
+    displayDayMenuList();
     
 }
 
