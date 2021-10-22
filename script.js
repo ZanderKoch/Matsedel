@@ -202,12 +202,28 @@ function generateArticle(dayMenu){
     if ('content' in document.createElement("template")) {
         //initializing template and cloning its contents
         let template = document.querySelector("#template")
-        let templateClone = template.cloneNode(true);
+        let templateClone = template.content.cloneNode(true);
         
         //getting weekday as a string
         let weekday = getWeekDay(dayMenu.date);
 
-        //writing weekday and 
+        //writing weekday and dayMenu.date to spans in clone
+        let spans = templateClone.querySelectorAll("span");
+        spans[0].appendChild(document.createTextNode(weekday))
+        spans[1].appendChild(document.createTextNode(dayMenu.date))
+
+        //adding dishes to article's <ul>
+        let dishList = templateClone.querySelector("ul");
+        for(let dish of dayMenu.dishes){
+            let templi = document.createElement("li");
+            let dishText = document.createTextNode(dish);
+            templi.appendChild(dishText);
+            dishList.appendChild(templi);
+        }
+
+        //returning finished template clone
+        console.log(templateClone); //debug
+
     }
     else{
         /** @todo display this with a generic error function instead */
@@ -267,9 +283,8 @@ function init(){
 
     //generating and displaying the articles 
     //displayTodayMenu();
-
-    //debug
-    console.log(getWeekDay(todayDate));
+    console.log(dayMenuList[0])
+    generateArticle(dayMenuList[0]);
     
 }
 
