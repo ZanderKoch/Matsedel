@@ -5,13 +5,12 @@
  */
 package nu.te4.menu.entities;
 
-import Web_Scraping.Web_Scraping;
 import java.sql.Date;
-import java.util.List;
+
 
 /**
  *
- * @author Elev
+ * @author Patrick Kulevski
  */
 public class Menu {
     

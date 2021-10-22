@@ -6,7 +6,6 @@
 package nu.te4.matsedel.serlvets;
 
 import Web_Scraping.QuartzJob;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
@@ -23,7 +22,7 @@ import org.quartz.impl.StdSchedulerFactory;
 
 /**
  *
- * @author Elev
+ * @author Patrick Kulevski
  */
 public class WebScrapingServlet implements ServletContextListener{
     @Override

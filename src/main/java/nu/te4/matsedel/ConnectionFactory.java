@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Elev
+ * @author Patrick Kulevski
  */
 public class ConnectionFactory {
     public static Connection getConnection() throws ClassNotFoundException, SQLException{

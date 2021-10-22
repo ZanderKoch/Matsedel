@@ -7,7 +7,6 @@ package Web_Scraping;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
@@ -19,7 +18,7 @@ import org.jsoup.select.Elements;
 
 /**
  *
- * @author Elev
+ * @author Patrick Kulevski
  */
 public class Web_Scraping {
     
@@ -74,7 +73,7 @@ public class Web_Scraping {
                     break;                    
                 }
                 
-                String date1 ="2021" +"-"+ månad+"-" + arrOfStr[0]; //skriver ut korrekt formatering av datum tex 2021-10-20 beroende vad den får från lsitan
+                String date1 = "2021" + "-" + månad + "-" + arrOfStr[0]; //skriver ut korrekt formatering av datum tex 2021-10-20 beroende vad den får från lsitan
                 Date mån= Date.valueOf(date1);//new SimpleDateFormat("yyyy-MM-dd").parse(date1);
                 Menu dish1 = new Menu();
                 Menu dish2 = new Menu();

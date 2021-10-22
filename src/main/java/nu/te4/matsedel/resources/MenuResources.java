@@ -5,7 +5,6 @@
  */
 package nu.te4.matsedel.resources;
 
-import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -28,25 +27,8 @@ public class MenuResources {
     
     @GET
     public Response getMenu(){
-        List<Menu> menu = menuBean.getMenu();
-        if(menu.size() > 0){
-            return Response.ok(menu).build();
-        }
-        else{
-            return Response.noContent().build();
-        }
+       return menuBean.getMenu();
     }
     
-    @POST
-    public Response postMenu(Menu menu){
-        if(menuBean.postMenu(menu)){
-            return Response.status(Response.Status.CREATED).build();
-        }
-        else{
-            return Response
-                    .serverError()
-                    .entity("Oops, something went wrong!")
-                    .build();
-        }
-    }
+
 }

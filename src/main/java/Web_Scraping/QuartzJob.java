@@ -6,7 +6,6 @@
 package Web_Scraping;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.util.List;
 import nu.te4.matsedel.ConnectionFactory;
 import nu.te4.matsedel.beans.MenuBeans;
@@ -18,19 +17,18 @@ import org.quartz.JobExecutionException;
 
 /**
  *
- * @author Elev
+ * @author Patrick Kulevski
  */
 public class QuartzJob implements Job{
     
     @Override
     public void execute(JobExecutionContext jec) throws JobExecutionException {
-        try(Connection con = ConnectionFactory.getConnection()){
+        try{
             List<Menu> dishes = new Web_Scraping().scraping(); //jobbet anropar webb skrapningen så att dne kan följa schemat
             System.out.println("Posting dishes");
             MenuBeans menuBean = new MenuBeans();
-            for(Menu dish: dishes){
-                menuBean.postMenu(dish);
-            }
+            menuBean.postMenu(dishes);
+
             
         }catch(Exception e){
             System.out.println("Error QuartzJob: "+e.getMessage());
