@@ -1,3 +1,6 @@
+DELETE FROM menu;
+TRUNCATE TABLE menu;
+
 INSERT INTO menu(serving_date, description) VALUES("2021-12-04", "Miso soup whit white bread" );
 
 INSERT INTO menu(serving_date, description) VALUES("2021-05-08", "Pinapple cake whit ice cream and numerus berrys" );
