@@ -5,7 +5,9 @@
  */
 package nu.te4.menu.entities;
 
+import Web_Scraping.Web_Scraping;
 import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -35,7 +37,7 @@ public class Menu {
     public Date getServing_date(){
         return serving_date;
     }
-    public void serServing_date(Date serving_date){
+    public void setServing_date(Date serving_date){
         this.serving_date = serving_date;
     }
     

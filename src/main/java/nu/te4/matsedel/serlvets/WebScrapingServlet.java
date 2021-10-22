@@ -31,7 +31,7 @@ public class WebScrapingServlet implements ServletContextListener{
         try{
         JobDetail job = JobBuilder.newJob(QuartzJob.class).build();
         Trigger crontrigger = TriggerBuilder.newTrigger().withIdentity("CronTrigger")
-                .withSchedule(CronScheduleBuilder.cronSchedule("0 0/1 * 1/1 * ? *")).build();
+                .withSchedule(CronScheduleBuilder.cronSchedule("0 0/1 * 1/1 * ? *")).build(); // schemalagt att webbskrapa 1 gång varje minut
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
         scheduler.start();
         scheduler.scheduleJob(job, crontrigger);

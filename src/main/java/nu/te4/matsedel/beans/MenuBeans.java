@@ -5,7 +5,7 @@
  */
 package nu.te4.matsedel.beans;
 
-import java.sql.Connection;
+import com.mysql.jdbc.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +25,7 @@ public class MenuBeans {
     public List<Menu> getMenu(){
         List<Menu> menuList = new ArrayList<>();
         try(Connection con = ConnectionFactory.getConnection()){
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM menu ORDER BY serving_date ASC");
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM menu WHERE serving_date LIKE '20%-%-%' ORDER BY serving_date ASC");
             ResultSet result = stmt.executeQuery();
             while(result.next()){
                 String description = result.getString("description");

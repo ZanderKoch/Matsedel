@@ -5,7 +5,7 @@
  */
 package nu.te4.matsedel;
 
-import java.sql.Connection;
+import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
