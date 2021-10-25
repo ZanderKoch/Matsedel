@@ -7,8 +7,8 @@
 //Dummy data//
 //////////////
 const dummyMenu = [
-    //{serving_date:"2021-10-25", description:"lorembiff"},
-    //{serving_date:"2021-10-25", description:"lorembiff2"},
+    {serving_date:"2021-10-25", description:"lorembiff"},
+    {serving_date:"2021-10-25", description:"lorembiff2"},
     {serving_date:"2021-10-26", description:"lorembiff"},
     {serving_date:"2021-10-26", description:"lorembiff2"},
     {serving_date:"2021-10-27", description:"lorembiff"},
@@ -166,7 +166,8 @@ function checkDayMenusForDate(date){
  * serving_date:"YYYY-MM-DD",description:""
  */
 function separateMenu(inputCollection){
-    inputCollection.forEach(currentDish =>{
+    console.log(inputCollection)
+    for(let currentDish of inputCollection){
         //determening if the current dish's date already has a DayMenu
         // with its date in dayMenulist
         if(checkDayMenusForDate(currentDish.serving_date)){
@@ -187,7 +188,8 @@ function separateMenu(inputCollection){
             console.log("created DayMenu for " + currentDish.serving_date + 
                 " and added " + currentDish.description);  //debug
         }
-    })
+    }
+        
 }
 
 /**
@@ -289,10 +291,12 @@ function displayDayMenuList(){
     
     //finding the section to display in
     let section = document.querySelector("#weeksection")
-        for(let dayMenu of dayMenuList){
-            let article = generateArticle(dayMenu);
-            section.appendChild(article);
-        }   
+        
+    //looping through dayMenuList, generating and displaying articles
+    for(let dayMenu of dayMenuList){
+        let article = generateArticle(dayMenu);
+        section.appendChild(article);
+    }   
 }
 
 /**
@@ -302,6 +306,20 @@ function displayDayMenuList(){
  */
 function displayNetError(){}
 
+/**
+ * fetches dishes from the backend server and returns them as an array of dishes
+ * @returns {Object[]}
+ */
+async function fetchMenu(){
+    let result;
+    fetch("http://localhost:8080/matsedel/api/menu").then(response=>{
+        response.json();
+    }).then(data=>{
+        console.log(data)
+        result = data;
+    })
+    return result;
+}
 
 /**
  * initialization
@@ -310,10 +328,6 @@ function init(){
     //sets clientside determined values
     todayDate = getCurrentDateString();
     currentWeekNumber = getWeek();
-    
-    //logs clientside determined values to console for debug
-    console.log(todayDate); 
-    console.log(currentWeekNumber) 
 
     //display all clientside determined values on the site
     displayClientsideValues();
@@ -325,9 +339,9 @@ function init(){
     /* fetch the menu, loop through it, generate date based articles with dishes
      * according to template
      */
-    
+     let fetchedData = fetchMenu();
     //assign the result of a menu fetching function in a variable
-    separateMenu(dummyMenu); //using dummyMenu for debug
+    separateMenu(fetchedData); 
     //separated menu stores in dayMenuList
     console.log(dayMenuList);
 
