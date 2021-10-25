@@ -7,15 +7,14 @@
 //Dummy data//
 //////////////
 const dummyMenu = [
-    {serving_date:"2021-10-19", description:"lorembiff"},
-    {serving_date:"2021-10-19", description:"lorembiff2"},
-    {serving_date:"2021-10-20", description:"lorembiff"},
-    {serving_date:"2021-10-20", description:"lorembiff2"},
-    {serving_date:"2021-10-21", description:"lorembiff"},
-    {serving_date:"2021-10-22", description:"lorembiff"},
-    {serving_date:"2021-10-22", description:"lorembiff2"},
-    {serving_date:"2021-10-23", description:"lorembiff"},
-
+    //{serving_date:"2021-10-25", description:"lorembiff"},
+    //{serving_date:"2021-10-25", description:"lorembiff2"},
+    {serving_date:"2021-10-26", description:"lorembiff"},
+    {serving_date:"2021-10-26", description:"lorembiff2"},
+    {serving_date:"2021-10-27", description:"lorembiff"},
+    {serving_date:"2021-10-28", description:"lorembiff"},
+    {serving_date:"2021-10-28", description:"lorembiff2"},
+    {serving_date:"2021-10-29", description:"lorembiff"},
 ];
 
 console.log(dummyMenu);
@@ -251,7 +250,7 @@ function getWeekDay(dateString){
 
 /**
  * displays the current day's menu
- * @todo implement 
+ * @todo implement error handling
  */
 function displayTodayMenu(){
     //trying to find today's DayMenu from dayMenuList
@@ -264,23 +263,44 @@ function displayTodayMenu(){
     
     //finding the section to display in
     let section = document.querySelector("#todaysection")
-
-    //generating and displaying on page if found, 
-    //doing some sorta error handling if not
-    if(todayMenu != "undefined"){
+    console.log(todayMenu);
+    //generating and displaying on page if there is a DayMenu for current day
+    if(typeof todayMenu != "undefined"){
+        console.log(todayMenu);
         let article = generateArticle(todayMenu);
         section.appendChild(article);
+    }
+    //telling the user that no menu was found for today
+    else{
+        let paragraph = document.createElement("p");
+        let textnode = document.createTextNode(
+            "No menu was found for today's date");
+        paragraph.appendChild(textnode)
+        section.appendChild(paragraph)
     }
 
 }
 
 /**
- * displays al DayMenus in dayMenuList
+ * displays all DayMenus in dayMenuList
  * @todo implement
  */
 function displayDayMenuList(){
-
+    
+    //finding the section to display in
+    let section = document.querySelector("#weeksection")
+        for(let dayMenu of dayMenuList){
+            let article = generateArticle(dayMenu);
+            section.appendChild(article);
+        }   
 }
+
+/**
+ * recievs an error respose object and displays it on the site
+ * @param
+ * @todo finish documentation, implement
+ */
+function displayNetError(){}
 
 
 /**
