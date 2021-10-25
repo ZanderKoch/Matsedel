@@ -5,9 +5,7 @@
  */
 package Web_Scraping;
 
-import java.sql.Connection;
 import java.util.List;
-import nu.te4.matsedel.ConnectionFactory;
 import nu.te4.matsedel.beans.MenuBeans;
 import nu.te4.menu.entities.Menu;
 import org.quartz.Job;
